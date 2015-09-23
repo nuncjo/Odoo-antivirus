@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_antivir_whitelist_form" model="ir.ui.view">
+            <field name="name">antivir.whitelist.form</field>
+            <field name="model">antivir.whitelist</field>
+            <field name="arch" type="xml">
+                <form string="Whitelist file" version="7.0">
+                    <group>
+                        <field name="SHA256" />
+                        <field name="short_description" />
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_antivir_whitelist_tree" model="ir.ui.view">
+            <field name="name">antivir.whitelist.tree</field>
+            <field name="model">antivir.whitelist</field>
+            <field name="arch" type="xml">
+                <tree string="Whitelist">
+                    <field name="SHA256" />
+                    <field name="short_description" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="antivir_whitelist_search" >
+            <field name="name">antivir.whitelist.search</field>
+            <field name="model">antivir.whitelist</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Whitelist search">
+                    <field name="SHA256" />
+                </search>
+            </field>
+        </record>
+
+        <record id="action_antivir_whitelist" model="ir.actions.act_window">
+            <field name="name">Antivirus whitelist</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">antivir.whitelist</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="search_view_id" ref="antivir_whitelist_search"/>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem
+            name="Whitelist"
+            id="antivirus_whitelist"
+            parent="antivirus_sub_menu"
+            action="action_antivir_whitelist"
+            sequence="11" />
+
+    </data>
+</openerp>

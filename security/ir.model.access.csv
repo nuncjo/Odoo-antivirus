@@ -1,0 +1,11 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"antivir_quarantine_group_user","antivir_quarantine group_user","model_antivir_quarantine","base.group_user",1,1,1,0
+"antivir_whitelist_group_user","antivir_whitelist group_user","model_antivir_whitelist","base.group_user",1,0,0,0
+"antivir_blacklist_group_user","antivir_blacklist group_user","model_antivir_blacklist","base.group_user",1,0,0,0
+"antivir_config_group_user","antivir_config group_user","model_antivir_config","base.group_user",1,0,0,0
+"antivir_scanner_group_user","antivir_scanner group_user","model_antivir_scanner","base.group_user",1,0,0,0
+"antivir_quarantine_group_system","antivir_quarantine group_system","model_antivir_quarantine","base.group_system",1,1,1,1
+"antivir_whitelist_group_system","antivir_whitelist group_system","model_antivir_whitelist","base.group_system",1,1,1,1
+"antivir_blacklist_group_system","antivir_blacklist group_system","model_antivir_blacklist","base.group_system",1,1,1,1
+"antivir_config_group_system","antivir_config group_system","model_antivir_config","base.group_system",1,1,1,1,1
+"antivir_scanner_group_system","antivir_scanner group_system","model_antivir_scanner","base.group_system",1,1,1,1,1

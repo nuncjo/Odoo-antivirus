@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_antivir_scanner_form" model="ir.ui.view">
+            <field name="name">antivir.scanner.form</field>
+            <field name="model">antivir.scanner</field>
+            <field name="arch" type="xml">
+                <form string="Scanner" version="7.0">
+                    <group>
+                        <field name="config_id" invisible="1" />
+                        <field name="name" />
+                        <field name="is_active" />
+                    </group>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

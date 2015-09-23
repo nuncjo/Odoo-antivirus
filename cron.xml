@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="ir_cron_fetchmail_bulk_scan" model="ir.cron">
+            <field name="name">Antivirus Scanner</field>
+            <field name="interval_number">5</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="model">antivir.scanner</field>
+            <field name="function">bulk_scan</field>
+            <field name="args">(5,)</field>
+            <field name="active" eval="False"/>
+        </record>
+    </data>
+</openerp>

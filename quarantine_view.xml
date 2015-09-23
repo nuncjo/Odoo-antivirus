@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_antivir_quarantine_form" model="ir.ui.view">
+            <field name="name">antivir.quarantine.form</field>
+            <field name="model">antivir.quarantine</field>
+            <field name="arch" type="xml">
+                <form string="Quarantined file" version="7.0">
+                    <header>
+                        <button name="add_to_whitelist" type="object" string="Whitelist" />
+                        <button name="add_to_blacklist" type="object" string="Blacklist" />
+                        <button name="remove_from_quarantine" type="object" string="Remove from quarantine" invisible="1"/>
+                        <button name="check_virustotal" type="object" string="Check by Virustotal" />
+                    </header>
+                    <group>
+                        <field name="quarantined" readonly="1" />
+                        <field name="filename" />
+                        <field name="threat" />
+                        <field name="SHA256" />
+                        <field name="user_id" />
+                        <field name="attachment_ids">
+                            <tree>
+                                <field name="name" string="Name" />
+                                <field name="user_id" string="File owner" />
+                                <field name="virus_safe" string="Virus Safe" />
+                                <field name="virus_scan_date" string="Virus scan date" />
+                                <field name="virus_found_name" string="Virus name" />
+                            </tree>
+                        </field>
+                        <field name="scan_results" />
+                        <field name="whitelisted" readonly="1" />
+                        <field name="blacklisted" readonly="1" />
+                        <field name="virustotal_summary" readonly="1" />
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_antivir_quarantine_tree" model="ir.ui.view">
+            <field name="name">antivir.quarantine.tree</field>
+            <field name="model">antivir.quarantine</field>
+            <field name="arch" type="xml">
+                <tree string="Quarantine">
+                    <field name="quarantined" />
+                    <field name="filename" />
+                    <field name="threat" />
+                    <field name="SHA256" />
+                    <field name="user_id" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="antivir_quarantine_search" >
+            <field name="name">antivir.quarantine.search</field>
+            <field name="model">antivir.quarantine</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Quarantine search">
+                    <field name="threat" />
+                    <field name="SHA256" />
+                    <field name="user_id" />
+                    <field name="quarantined" />
+                    <group string="Group By..." expand="0">
+                        <filter string="User" context="{'group_by':'user_id'}" />
+                        <filter string="Threat" context="{'group_by':'threat'}" />
+                        <filter string="Quarantined date" name="quarantined_date" context="{'group_by':('quarantined','user_id')}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_antivir_quarantine" model="ir.actions.act_window">
+            <field name="name">Antivirus Quarantine</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">antivir.quarantine</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="search_view_id" ref="antivir_quarantine_search"/>
+            <field name="context">{"search_default_quarantined_date": 1}</field>
+        </record>
+
+        <menuitem
+            name="Quarantine"
+            id="antivirus_quarantine"
+            parent="antivirus_sub_menu"
+            action="action_antivir_quarantine"
+            sequence="10" />
+
+    </data>
+</openerp>
