@@ -12,6 +12,21 @@
 <li>Virustotal api needs api key, it can be obtained after registering www.virustotal.com</li>
 </ul>
 
+<h4>Configuration quickstart:</h4>
+<ul>
+<li>Add new configuration in Antivirus->Config menu</li>
+<li>Fill all fields, for virustotal api keys You should register at virustotal.com, it's free.</li>
+<li>Check "Use this config". Only one config can be active at once.</li>
+<li>Add new scanner named antivir.scanner.clamav .</li>
+</ul>
+
+<h4>Extending hints:</h4>
+<ul>
+<li>Adding new scanners is easy You should create file like <a href="https://github.com/nuncjo/Odoo-antivirus/blob/master/scanners/scanner_clamav.py">scanner_clamav.py</a>
+</li>
+<li>There is nice Python Wrapper library working with many commercial AV's https://github.com/nuncjo/multiav </li>
+</ul>
+
 
 <h4>Features:</h4>
 <ul>
