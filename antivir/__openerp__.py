@@ -4,7 +4,7 @@
     'version': '0.1 alpha',
     'author': 'Nuncjo',
     'website': 'https://github.com/nuncjo',
-    'category': 'Base',
+    'category': 'Extra Tools',
     'depends': ['base', 'mail', 'knowledge', 'document'],
     'description': """
 Attachments antivirus scanner.
