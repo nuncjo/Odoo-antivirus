@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<menuitem name="Antivirus" id="antivirus_main_menu" sequence="10" />
+	<menuitem name="Antivirus" id="antivirus_sub_menu" parent="antivirus_main_menu" sequence="10" />
+</odoo>

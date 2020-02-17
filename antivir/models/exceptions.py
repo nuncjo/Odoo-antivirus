@@ -20,21 +20,16 @@
 #
 ##############################################################################
 
-from openerp.osv import osv, fields
+from odoo.exceptions import UserError
 
-class antivir_whitelist(osv.osv):
 
-    _name = 'antivir.whitelist'
-    _description = 'Allowed files'
-    _inherit = ['ir.needaction_mixin']
+class VirusFound(UserError):
+    pass
 
-    _columns = {
-        'name': fields.char('Name'),
-        'SHA256': fields.char('SHA256'),
-        'short_description': fields.char("Short description")
-    }
 
-    def _needaction_domain_get(self, cr, uid, context=None):
-        return [(1, '=', 1)]
+class ScanError(UserError):
+    pass
 
-    _sql_constraints = [('field_unique', 'unique(SHA256)', 'SHA256 has to be unique!')]
+
+class ConfigError(UserError):
+    pass

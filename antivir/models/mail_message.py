@@ -20,21 +20,21 @@
 #
 ##############################################################################
 
-from openerp.osv import osv, fields
-from openerp.tools.translate import _
+from odoo import models, fields, api, _
 from .exceptions import VirusFound
 
-class mail_message(osv.Model):
+
+class MailMessage(models.Model):
     _inherit = 'mail.message'
 
-    def create(self, cr, uid, values, context=None):
+    @api.model
+    def create(self, vals):
         try:
-            result = super(mail_message, self).create(cr, uid, values, context=context)
+            result = super(MailMessage, self).create(vals)
             return result
-
         except VirusFound:
             body = values.get('body')
             new_body = "{}\n{}".format(body, _("Virus found. Attachment deleted."))
             values.update({'body': new_body})
             values.update({'attachment_ids': []})
-            return super(mail_message, self).create(cr, uid, values, context=context)
+            return super(MailMessage, self).create(vals)

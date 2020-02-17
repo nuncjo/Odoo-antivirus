@@ -1,0 +1,44 @@
+// Coloque su configuración en este archivo para sobrescribir la configuración predeterminada y de usuario.
+{   
+    "xmlTools.xmlFormatterImplementation": "classic",
+
+    "python.pythonPath": "/home/arobert/.virtualenvs/odoo10/bin/python",
+    "python.autoComplete.extraPaths": [
+        "/home/arobert/workspace/soltein/SGD/src/odoo/addons",
+        "/home/arobert/workspace/soltein/SGD/src/odoo",
+        "/home/arobert/workspace/soltein/SGD/src/odoo/odoo" ,
+        "/home/arobert/.virtualenvs/odoo10/local/lib/python2.7/site-packages/"
+    ],
+    
+    "python.formatting.provider": "yapf",
+    "python.formatting.yapfPath": "/home/arobert/.virtualenvs/odoo10/bin/yapf",
+
+    
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.pylintPath": "/home/arobert/.virtualenvs/odoo10/bin/pylint",
+    "python.linting.pylintArgs": [
+        "--load-plugins", "pylint_odoo"
+    ],
+
+    "python.linting.pycodestylePath": "/home/arobert/.virtualenvs/odoo10/bin/pep8",
+    "python.linting.pycodestyleEnabled": false,
+    "python.linting.pycodestyleArgs": [
+        "--max-line-length=120",
+        "-v"
+    ],
+
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 500,
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/*/**": true
+    },
+
+    "files.exclude": {
+        "**/*.pyc": true
+    },
+
+    "auto-close-tag.fullMode": true
+}

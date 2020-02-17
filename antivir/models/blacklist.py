@@ -20,21 +20,26 @@
 #
 ##############################################################################
 
-from openerp.osv import osv, fields
+from odoo import models, fields, api
 
-class antivir_blacklist(osv.osv):
 
+class AntivirBlacklist(models.Model):
     _name = 'antivir.blacklist'
-    _description = 'Disallowed files'
     _inherit = ['ir.needaction_mixin']
+    _description = 'Disallowed files'
 
-    _columns = {
-        'name': fields.char('Name'),
-        'SHA256': fields.char('SHA256'),
-        'short_description': fields.char("Short description")
-    }
+    _sql_constraints = [
+        ('field_unique', 'unique(SHA256)', 'SHA256 has to be unique!')
+    ]
 
-    def _needaction_domain_get(self, cr, uid, context=None):
+    name = fields.Char()
+
+    SHA256 = fields.Char()
+
+    short_description = fields.Char()
+
+    @api.model
+    def _needaction_domain_get(self):
         return [(1, '=', 1)]
 
-    _sql_constraints = [('field_unique', 'unique(SHA256)', 'SHA256 has to be unique!')]
+    

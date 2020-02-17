@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_antivir_config_form" model="ir.ui.view">
+		<field name="name">antivir.config.form</field>
+		<field name="model">antivir.config</field>
+		<field name="arch" type="xml">
+			<form string="Config file" version="7.0">
+				<group>
+					<field name="name" />
+					<field name="scan_create" />
+					<field name="scan_cron" />
+					<field name="virustotal_api_url" />
+					<field name="virustotal_api_key" />
+					<field name="scanner_ids">
+						<tree>
+							<field name="name" />
+							<field name="is_active" />
+						</tree>
+					</field>
+					<field name="disallowed_extensions" />
+					<field name="active_config" />
+					<field name="notes" widget="html" />
+				</group>
+			</form>
+		</field>
+	</record>
+
+	<record id="view_antivir_config_tree" model="ir.ui.view">
+		<field name="name">antivir.config.tree</field>
+		<field name="model">antivir.config</field>
+		<field name="arch" type="xml">
+			<tree string="Config" colors="green:active_config==True">
+				<field name="name" />
+				<field name="active_config" />
+			</tree>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="antivir_config_search">
+		<field name="name">antivir.config.search</field>
+		<field name="model">antivir.config</field>
+		<field name="type">search</field>
+		<field name="arch" type="xml">
+			<search string="config search"></search>
+		</field>
+	</record>
+
+	<record id="action_antivir_config" model="ir.actions.act_window">
+		<field name="name">Antivirus config</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">antivir.config</field>
+		<field name="view_mode">tree,form</field>
+		<field name="view_type">form</field>
+		<field name="search_view_id" ref="antivir_config_search"/>
+		<field name="context">{"search_default_config_date": 1}</field>
+	</record>
+    
+	<menuitem name="Config" id="antivirus_config" parent="antivirus_sub_menu" action="action_antivir_config" sequence="13" />
+</odoo>

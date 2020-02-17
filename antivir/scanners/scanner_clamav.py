@@ -20,26 +20,24 @@
 #
 ##############################################################################
 
-from openerp import SUPERUSER_ID
-from openerp.osv import osv, fields
+from odoo import models, fields, api, _, SUPERUSER_ID
 from .pyclamd import ClamdAgnostic
 
 
-class antivir_scanner_clamav(osv.osv):
+class AntivirScannerClamav(models.Model):
     _inherit = 'antivir.scanner'
     _av_engine = 'antivir.scanner.clamav'
 
     def __init__(self, registry, cr):
-        super(antivir_scanner_clamav, self).__init__(registry, cr)
+        super(AntivirScannerClamav, self).__init__(registry, cr)
         self.register_engine(cr, SUPERUSER_ID, self._av_engine)
 
-    def scan(self, cr, uid, stream, results=None, context=None):
-
+    @api.multi
+    def scan(self, stream, results=None):
         if not results:
             results = []
 
-        with self.active_scanner(cr, uid, context=context) as active:
-
+        with self.active_scanner() as active:
             if active:
                 result = self.run(stream)
 
@@ -48,7 +46,7 @@ class antivir_scanner_clamav(osv.osv):
                 else:
                     results.append({self._av_engine: None})
 
-        return super(antivir_scanner_clamav, self).scan(cr, uid, stream, results=results, context=context)
+        return super(AntivirScannerClamav, self).scan(stream, results=results)
 
     @staticmethod
     def run(stream):
@@ -58,5 +56,5 @@ class antivir_scanner_clamav(osv.osv):
         """
         cd = ClamdAgnostic()
         scan_stream = cd.scan_stream(stream)
-        result = scan_stream.get('stream')
+        result = scan_stream.get('stream') if scan_stream else False
         return result

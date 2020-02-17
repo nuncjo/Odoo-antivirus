@@ -20,11 +20,14 @@
 #
 ##############################################################################
 
-from openerp.osv import osv, fields
+from odoo import models, fields
 
 
-class res_users(osv.osv):
+class ResUsers(models.Model):
     _inherit = 'res.users'
-    _columns = {
-        'quarantine_files_ids': fields.one2many('antivir.quarantine', 'user_id', 'Quarantine files')
-    }
+
+    quarantine_files_ids = fields.One2many(
+        comodel_name='antivir.quarantine', 
+        inverse_name='user_id', 
+        string='Quarantine files'
+    )
