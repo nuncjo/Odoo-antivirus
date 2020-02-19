@@ -22,7 +22,7 @@
 
 <h4>Extending hints:</h4>
 <ul>
-<li>Adding new scanners is easy You should create file like <a href="https://github.com/nuncjo/Odoo-antivirus/blob/master/scanners/scanner_clamav.py">scanner_clamav.py</a>
+<li>Adding new scanners is easy You should create file like <a href="https://github.com/nuncjo/Odoo-antivirus/blob/master/antivir/scanners/scanner_clamav.py">scanner_clamav.py</a>
 </li>
 <li>There is nice Python Wrapper library working with many commercial AV's https://github.com/nuncjo/multiav </li>
 </ul>
