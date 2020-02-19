@@ -90,7 +90,6 @@ class IrAttachment(models.Model):
             if config.scan_create:
                 datas = vals.get('datas')
                 if datas:
-                    decoded_datas = base64.b64decode(datas)
                     SHA256 = hashlib.sha256(datas).hexdigest()
 
                     whitelisted_ids = self.env['antivir.whitelist'].search([
@@ -104,7 +103,7 @@ class IrAttachment(models.Model):
                         if blacklisted_ids.exists():
                             raise VirusFound(_("Antivirus Warning!\nThis file is blocked and cannot be uploaded."))
                         else:
-                            result = self.env['antivir.scanner'].scan(decoded_datas)
+                            result = self.env['antivir.scanner'].scan(base64.b64decode(datas))
                             if any(x.values()[0] for x in result):
                                 threat = ','.join([
                                     val[1] for d in result for key, val in d.iteritems() if val is not None

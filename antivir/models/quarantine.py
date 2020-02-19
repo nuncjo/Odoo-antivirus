@@ -91,12 +91,7 @@ class AntivirQuarantine(models.Model):
                     'short_description': self.threat
                 })
 
-                if model == 'antivir.whitelist':
-                    data = {'whitelisted': True}
-                else:
-                    data = {'blacklisted': True}
-
-                self.write(data)
+                self.write({"whitelisted" if model == 'antivir.whitelist' else "blacklisted": True})
 
                 for attachment_id in self.attachment_ids:
                     attachment_id.write({

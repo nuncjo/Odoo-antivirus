@@ -54,7 +54,5 @@ class AntivirScannerClamav(models.Model):
         :param stream: str file data
         :return: tuple
         """
-        cd = ClamdAgnostic()
-        scan_stream = cd.scan_stream(stream)
-        result = scan_stream.get('stream') if scan_stream else False
-        return result
+        scan_stream = ClamdAgnostic().scan_stream(stream)
+        return scan_stream.get('stream') if scan_stream else False

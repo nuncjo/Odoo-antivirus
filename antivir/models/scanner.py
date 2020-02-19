@@ -158,10 +158,7 @@ class AntivirScanner(models.Model):
         try:
             if scanner_ids.exists():
                 is_active = scanner_ids[0].is_active
-                if is_active:
-                    yield True
-                else:
-                    yield False
+                yield is_active
         finally:
             if is_active:
                 _logger.info("File scanned with {}".format(self._av_engine))

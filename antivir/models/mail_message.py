@@ -30,8 +30,7 @@ class MailMessage(models.Model):
     @api.model
     def create(self, vals):
         try:
-            result = super(MailMessage, self).create(vals)
-            return result
+            return super(MailMessage, self).create(vals)
         except VirusFound:
             body = values.get('body')
             new_body = "{}\n{}".format(body, _("Virus found. Attachment deleted."))
