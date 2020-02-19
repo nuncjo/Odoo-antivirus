@@ -5,7 +5,7 @@
     'author': 'Nuncjo',
     'website': 'https://github.com/nuncjo',
     'category': 'Extra Tools',
-    'depends': ['base', 'mail', 'knowledge', 'document'],
+    'depends': ['base', 'mail', 'document'],
     'description': """
 Attachments antivirus scanner.
 ====================================================
@@ -52,14 +52,16 @@ Future extension possibilites for e.g.
     'data': [
         'security/ir.model.access.csv',
         'security/security.xml',
-        'antivir_view.xml',
-        'quarantine_view.xml',
-        'whitelist_view.xml',
-        'blacklist_view.xml',
-        'config_view.xml',
-        'scanner_view.xml',
-        'ir_attachment_view.xml',
-        'cron.xml',
+
+        'data/cron.xml',
+        
+        'views/antivir_view.xml',
+        'views/quarantine_view.xml',
+        'views/whitelist_view.xml',
+        'views/blacklist_view.xml',
+        'views/config_view.xml',
+        'views/scanner_view.xml',
+        'views/ir_attachment_view.xml',
     ],
     'demo': [],
     'installable': True,

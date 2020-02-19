@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_antivir_blacklist_form" model="ir.ui.view">
+		<field name="name">antivir.blacklist.form</field>
+		<field name="model">antivir.blacklist</field>
+		<field name="arch" type="xml">
+			<form string="Blacklist file">
+				<group>
+					<field name="SHA256" />
+					<field name="short_description" />
+				</group>
+			</form>
+		</field>
+	</record>
+
+	<record id="view_antivir_blacklist_tree" model="ir.ui.view">
+		<field name="name">antivir.blacklist.tree</field>
+		<field name="model">antivir.blacklist</field>
+		<field name="arch" type="xml">
+			<tree string="Blacklist">
+				<field name="SHA256" />
+				<field name="short_description" />
+			</tree>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="antivir_blacklist_search">
+		<field name="name">antivir.blacklist.search</field>
+		<field name="model">antivir.blacklist</field>
+		<field name="type">search</field>
+		<field name="arch" type="xml">
+			<search string="Blacklist search">
+				<field name="SHA256" />
+			</search>
+		</field>
+	</record>
+
+	<record id="action_antivir_blacklist" model="ir.actions.act_window">
+		<field name="name">Antivirus blacklist</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">antivir.blacklist</field>
+		<field name="view_mode">tree,form</field>
+		<field name="view_type">form</field>
+		<field name="search_view_id" ref="antivir_blacklist_search"/>
+		<field name="context">{}</field>
+	</record>
+    
+	<menuitem name="Blacklist" id="antivirus_blacklist" parent="antivirus_sub_menu" action="action_antivir_blacklist" sequence="12" />
+</odoo>

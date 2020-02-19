@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_document_file_tree_antivir" model="ir.ui.view">
+        <field name="name">ir.attachment.tree.antivir</field>
+        <field name="model">ir.attachment</field>
+        <field name="inherit_id" ref="base.view_attachment_tree"/>
+        <field name="arch" type="xml">
+            <field name="type" position="after">
+                <field name="virus_safe" />
+                <field name="virus_scan_date" />
+                <field name="virus_found_name" />
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_document_file_form_antivir">
+        <field name="name">ir.attachment.form.antivir</field>
+        <field name="model">ir.attachment</field>
+        <field name="priority" eval="1"/>
+        <field name="inherit_id" ref="base.view_attachment_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='datas']" position="replace">
+                <field name="datas_fname" invisible="1" />
+                <field name="virus_safe" groups="base.user_root"/>
+                <field name="datas" filename="datas_fname" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
