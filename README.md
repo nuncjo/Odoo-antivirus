@@ -1,5 +1,5 @@
 # Odoo antivirus
-<p>Openerp 7 antivirus plugin.</p>
+<p>Openerp 10.0 antivirus plugin.</p>
 
 <h4>Clamav daemon and virustotal quickstart:</h4>
 <ul>
